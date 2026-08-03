@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>FesFind フレンド招待</title>
+<meta name="apple-itunes-app" content="app-id=6775196934">
+<meta property="og:title" content="FesFindでフレンドになろう！">
+<meta property="og:description" content="フェス・ライブの参戦記録を共有できるアプリ FesFind。リンクからフレンド追加できます。">
+<meta property="og:type" content="website">
+<style>
+  :root { --accent:#E8383D; --bg:#0e0e10; --card:#1b1b1f; --text:#f5f5f7; --sub:#a1a1a6; }
+  * { box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  html,body { margin:0; height:100%; }
+  body { background:var(--bg); color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP",sans-serif;
+    display:flex; align-items:center; justify-content:center; padding:24px; }
+  .wrap { width:100%; max-width:400px; text-align:center; }
+  .logo { width:76px; height:76px; border-radius:18px; margin:0 auto 18px;
+    background:linear-gradient(135deg, var(--accent), #7a0f13);
+    display:flex; align-items:center; justify-content:center; font-size:38px; }
+  h1 { font-size:24px; font-weight:800; margin:0 0 6px; }
+  p.sub { color:var(--sub); font-size:14px; line-height:1.7; margin:0 0 24px; }
+  .codebox { background:var(--card); border-radius:16px; padding:18px; margin:0 0 22px; }
+  .codebox .label { color:var(--sub); font-size:12px; margin:0 0 6px; }
+  .codebox .code { font-size:26px; font-weight:800; letter-spacing:2px;
+    font-family:ui-monospace,SFMono-Regular,Menlo,monospace; word-break:break-all; }
+  a.cta { display:block; text-decoration:none; font-weight:800; font-size:17px;
+    padding:15px; border-radius:14px; margin:0 0 12px; }
+  a.primary { background:var(--accent); color:#fff; }
+  a.secondary { background:var(--card); color:var(--text); }
+  .note { color:var(--sub); font-size:12px; line-height:1.7; margin-top:18px; }
+  .hidden { display:none; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="logo">🎪</div>
+    <h1>FesFindでフレンドになろう！</h1>
+    <p class="sub">フェス・ライブの参戦記録を共有できるアプリ。<br>下のフレンドコードで追加できます。</p>
+
+    <div id="codebox" class="codebox hidden">
+      <p class="label">フレンドコード</p>
+      <div id="code" class="code"></div>
+    </div>
+
+    <a id="openApp" class="cta secondary hidden" href="#">アプリで開く</a>
+    <a class="cta primary" href="https://apps.apple.com/jp/app/fesfind/id6775196934">App Store でダウンロード</a>
+
+    <p class="note">
+      アプリがインストール済みなら、このリンクをタップすると FesFind が起動して
+      フレンド追加画面が開きます。<br>
+      未インストールの場合は、上のボタンからダウンロード後、フレンドコードで追加してください。
+    </p>
+  </div>
+
+  <script>
+    // ?code=... を取り出して表示。カスタムスキームでの「アプリで開く」も併設（インストール済みフォールバック）。
+    var params = new URLSearchParams(location.search);
+    var code = (params.get("code") || "").trim();
+    if (code) {
+      document.getElementById("code").textContent = code;
+      document.getElementById("codebox").classList.remove("hidden");
+      var open = document.getElementById("openApp");
+      open.href = "fesfind://invite?code=" + encodeURIComponent(code);
+      open.classList.remove("hidden");
+    }
+  </script>
+</body>
+</html>

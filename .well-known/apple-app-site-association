@@ -1,0 +1,12 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["KXBM2372CR.com.morilab.fesfind"],
+        "components": [
+          { "/": "/fesfind/invite*", "comment": "FesFind friend invite (Universal Link)" }
+        ]
+      }
+    ]
+  }
+}
